@@ -7,7 +7,10 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v4
       - name: Setup Java
-        uses: actions/setup-java
+        uses: uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
       - name: run the tests using maven
         run: ./mvnw clean test
         env:
