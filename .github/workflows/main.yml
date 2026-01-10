@@ -1,14 +1,12 @@
 name: Copy To Branches
-on:
-  workflow_dispatch:
+on: ["workflow_dispatch"]
 jobs:
   copy-to-branches:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Copy To Branches Action
-        uses: planetoftheweb/copy-to-branches@v1.2
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: run the tests using maven
+        run: ./mvnw clean test
         env:
           key: main
