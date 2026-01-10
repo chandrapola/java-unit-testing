@@ -1,4 +1,4 @@
-name: Copy To Branches
+name: CI-Run Junit Tests
 on: ["workflow_dispatch"]
 jobs:
   run-junit-tests:
