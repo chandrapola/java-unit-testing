@@ -1,11 +1,13 @@
 name: Copy To Branches
 on: ["workflow_dispatch"]
 jobs:
-  copy-to-branches:
+  run-junit-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java
       - name: run the tests using maven
         run: ./mvnw clean test
         env:
