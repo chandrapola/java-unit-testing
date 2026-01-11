@@ -1,4 +1,7 @@
 # Java: Practice Unit Testing
+
+[![CI-Run Junit Tests](https://github.com/chandrapola/java-unit-testing/actions/workflows/main.yml/badge.svg)](https://github.com/chandrapola/java-unit-testing/actions/workflows/main.yml)
+
 This is the repository for the LinkedIn Learning course Java: Practice Unit Testing. The full course is available from [LinkedIn Learning][lil-course-url].
 
 ![Java: Practice Unit Testing][lil-thumbnail-url] 
