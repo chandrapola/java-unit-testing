@@ -1,7 +1,7 @@
 name: CI-Run Junit Tests
 on: ["workflow_dispatch"]
 jobs:
-  run-junit-tests:
+  run-junit-tests-ubuntu:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
@@ -11,6 +11,51 @@ jobs:
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '21'
+      - name: Print env
+        run: env | sort
+      - name: run the tests using maven
+        run: ./mvnw clean test
+      - name: Publish JaCoCo Report
+        uses: Madrapps/jacoco-report@v1.3.1
+        with:
+        paths: |
+          ${{ github.workspace }}/target/site/jacoco/jacoco.xml
+        token: ${{ secrets.GITHUB_TOKEN }}
+        # Displays the report in the PR comment and workflow summary
+        comment-type: both 
+        # Set minimum coverage percentage for overall project to pass
+        min-coverage-overall: 80
+        env:
+          key: main
+  run-junit-tests-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v5.1.0
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
+      - name: Print env
+        run: "Get-ChildItem Env:"
+      - name: run the tests using maven
+        run: ./mvnw clean test
+        env:
+          key: main
+      
+  run-junit-tests-macos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
+      - name: Print env
+        run: env | sort
       - name: run the tests using maven
         run: ./mvnw clean test
         env:
