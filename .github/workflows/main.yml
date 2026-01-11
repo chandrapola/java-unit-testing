@@ -22,11 +22,12 @@ jobs:
             ${{ github.workspace }}/target/site/jacoco/jacoco.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           # Displays the report in the PR comment and workflow summary
-          comment-type: both 
+          comment-type: both
+          update-comment: true
           # Set minimum coverage percentage for overall project to pass
           min-coverage-overall: 80
-        env:
-          key: main
+      - name: Publish report a Markdown content
+        run: echo "{markdown content}" >> $GITHUB_STEP_SUMMARY
   run-junit-tests-windows:
     runs-on: windows-latest
     steps:
