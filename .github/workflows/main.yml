@@ -19,7 +19,7 @@ jobs:
         uses: Madrapps/jacoco-report@v1.3.1
         with:
           paths: |
-          ${{ github.workspace }}/target/site/jacoco/jacoco.xml
+            ${{ github.workspace }}/target/site/jacoco/jacoco.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           # Displays the report in the PR comment and workflow summary
           comment-type: both 
