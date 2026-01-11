@@ -16,7 +16,7 @@ jobs:
       - name: run the tests using maven
         run: ./mvnw clean test jacoco:report
       - name: Publish JaCoCo Report
-        uses: Madrapps/jacoco-report@v1.3.1
+        uses: Madrapps/jacoco-report@v1.7.2
         with:
           paths: |
             ${{ github.workspace }}/target/site/jacoco/jacoco.xml
