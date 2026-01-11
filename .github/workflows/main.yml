@@ -27,8 +27,6 @@ jobs:
           update-comment: true
           # Set minimum coverage percentage for overall project to pass
           min-coverage-overall: 80
-      - name: Publish report a Markdown content
-        run: echo "{markdown content}" >> $GITHUB_STEP_SUMMARY
   run-junit-tests-windows:
     runs-on: windows-latest
     steps:
