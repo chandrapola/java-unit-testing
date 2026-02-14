@@ -1,13 +1,11 @@
 {
-	"name": "Java",
+	"name": "Java 25 DevContainer",
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
 			//Can change to another of Java
-			"VARIANT": "21",
-			"INSTALL_MAVEN": "false",
-			"INSTALL_GRADLE": "false",
-			"NODE_VERSION": "lts/*"
+			"VARIANT": "25",
+			"INSTALL_MAVEN": "true"
 		}
 	},
 	// Configure tool-specific properties.
@@ -23,6 +21,8 @@
 		}
 	},
 	"remoteUser": "vscode",
-	"onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc" //Set Terminal Prompt to $
+	"forwardPorts": [
+		8000
+	]
 }
 // DevContainer Reference: https://code.visualstudio.com/docs/remote/devcontainerjson-reference

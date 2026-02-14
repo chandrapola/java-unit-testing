@@ -3,6 +3,9 @@ on: ["workflow_dispatch"]
 jobs:
   run-junit-tests-ubuntu:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        component: [a, b, c]
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
@@ -29,6 +32,9 @@ jobs:
           min-coverage-overall: 80
   run-junit-tests-windows:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        component: [x, y, z]
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
@@ -46,6 +52,9 @@ jobs:
       
   run-junit-tests-macos:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        component: [p, q, r]
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4

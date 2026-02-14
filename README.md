@@ -30,6 +30,12 @@ To resolve this issue:
     Add changes to git using this command: git add .
 	Commit changes using this command: git commit -m "some message"
 
+**JaCoCo**
+- **Purpose:** Generate code coverage reports using JaCoCo for this project.
+- **Maven:** Run `mvn clean test jacoco:report` to execute tests and produce the report. Open the HTML report at [target/site/jacoco/index.html](target/site/jacoco/index.html).
+- **Coverage data file:** A JaCoCo execution data file is created (Maven example: [target/jacoco.exec](target/jacoco.exec)).
+- **Open in browser:** Use `"$BROWSER" target/site/jacoco/index.html` or `xdg-open target/site/jacoco/index.html` to view the report locally.
+- **Troubleshooting:** If the report is missing, ensure tests ran and the JaCoCo plugin is enabled for the build tool you used. For Maven, running `mvn jacoco:report` after `mvn test` will generate the report when the agent produced the exec file.
 
 ### Instructor
 

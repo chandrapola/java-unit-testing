@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
 
@@ -16,12 +18,16 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testSubtract() {
-        int expected = 3;
-
-        int actual = calculator.subtract(5, 2);
-
+    public void testSubtract() throws Exception {
+        int expected = 5;
+        int actual = calculator.subtract(15, 10);
         assertEquals(expected, actual);
+        assertDoesNotThrow(() -> calculator.subtract(15, 10));
+    }
+
+    @Test
+    public void testSubtractException() {
+        assertThrows(Exception.class, () -> calculator.subtract(10, 15));
     }
 
     @Test

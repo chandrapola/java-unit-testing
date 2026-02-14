@@ -5,7 +5,10 @@ public class Calculator {
     }
 
     // This method should return the result of subtracting y from x.
-    public int subtract(int x, int y) {
+    public int subtract(int x, int y) throws Exception {
+        if (x < y ){
+            throw new Exception("The first argument is small");
+        }
         return x - y;
     }
 
