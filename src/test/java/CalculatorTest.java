@@ -4,48 +4,59 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * Unit tests for the Calculator class.
+ */
 public class CalculatorTest {
 
-    Calculator calculator = new Calculator();
-
+    /**
+     * Test addition of two positive integers.
+     */
     @Test
     public void testAdd() {
-        int expected = 3;
-
-        int actual = calculator.add(1, 2);
-
+        final int expected = 3;
+        final int actual = Calculator.add(1, 2);
         assertEquals(expected, actual);
     }
 
+    /**
+     * Test subtraction of two integers.
+     *
+     * @throws Exception if subtraction fails
+     */
     @Test
     public void testSubtract() throws Exception {
-        int expected = 5;
-        int actual = calculator.subtract(15, 10);
+        final int expected = 5;
+        final int actual = Calculator.subtract(15, 10);
         assertEquals(expected, actual);
-        assertDoesNotThrow(() -> calculator.subtract(15, 10));
+        assertDoesNotThrow(() -> Calculator.subtract(15, 10));
     }
 
+    /**
+     * Test subtraction throws exception when first argument is smaller.
+     */
     @Test
     public void testSubtractException() {
-        assertThrows(Exception.class, () -> calculator.subtract(10, 15));
+        assertThrows(Exception.class, () -> Calculator.subtract(10, 15));
     }
 
+    /**
+     * Test multiplication of two integers.
+     */
     @Test
     public void testMultiply() {
-        int expected = 6;
-
-        int actual = calculator.multiply(3, 2);
-
+        final int expected = 6;
+        final int actual = Calculator.multiply(3, 2);
         assertEquals(expected, actual);
     }
 
+    /**
+     * Test division of two integers.
+     */
     @Test
     public void testDivide() {
-        int expected = 5;
-
-        int actual = calculator.divide(10, 2);
-
+        final int expected = 5;
+        final int actual = Calculator.divide(10, 2);
         assertEquals(expected, actual);
     }
-
 }

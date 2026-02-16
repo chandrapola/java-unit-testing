@@ -15,9 +15,12 @@
   "emmet.triggerExpansionOnTab": true,
   "explorer.openEditors.visible": 0,
   "files.autoSave": "afterDelay",
+  "files.exclude": {
+    "**/.git": false
+  },
   "screencastMode.onlyKeyboardShortcuts": true,
   "terminal.integrated.fontSize": 18,
-  "workbench.colorTheme": "Visual Studio Dark",
+  "workbench.colorTheme": "Visual Studio Light",
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": true,
   "java.server.launchMode": "Standard",

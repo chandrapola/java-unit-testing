@@ -3,7 +3,4 @@
 ARG VARIANT="25"
 FROM mcr.microsoft.com/devcontainers/java:${VARIANT}-bookworm
 
-# [Option] Install Maven
-ARG INSTALL_MAVEN="true"
-ARG MAVEN_VERSION=""
-RUN if [ "${INSTALL_MAVEN}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install maven \"${MAVEN_VERSION}\""; fi
+RUN apt-get update && apt-get install -y maven
