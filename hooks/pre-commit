@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Git pre-commit hook - Java-based validation without external dependencies like python based pre-commit
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+EXIT_CODE=0
+
+echo "═══════════════════════════════════════════════════"
+echo "Pre-Commit Validation (Java/Maven-based)"
+echo "═══════════════════════════════════════════════════"
+echo ""
+
+# Check for merge conflicts in staged files
+echo "Running: Merge Conflict Detection"
+if git diff --cached | grep -q "^[<>=]{7}"; then
+    echo "❌ Merge conflict markers detected"
+    EXIT_CODE=1
+else
+    echo "✓ No merge conflicts"
+fi
+echo ""
+
+# Run all checks (code style + tests) using Maven profile
+echo "Running: All Checks (Code Style + Unit Tests)"
+if mvn clean verify -P all-checks; then
+    echo "✓ All checks passed"
+else
+    echo "❌ Some checks failed"
+    EXIT_CODE=1
+fi
+echo ""
+
+# Final result
+echo "═══════════════════════════════════════════════════"
+if [ $EXIT_CODE -eq 0 ]; then
+    echo "✓ Pre-commit checks passed. Commit allowed."
+else
+    echo "❌ Pre-commit checks failed. Commit aborted."
+fi
+echo "═══════════════════════════════════════════════════"
+
+exit $EXIT_CODE
